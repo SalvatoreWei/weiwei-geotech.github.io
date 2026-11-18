@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wei Wei - Academic Profile & Research Website</title>
+    <title>Wei Wei - Academic Profile & Research</title>
+    <!-- 引入 FontAwesome 图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary-color: #0f2b48;
@@ -15,6 +17,7 @@
             --text-main: #1e293b;
             --text-muted: #64748b;
             --border-color: #e2e8f0;
+            --highlight-btn: #dc2626;
         }
 
         * {
@@ -28,7 +31,7 @@
             line-height: 1.6;
             color: var(--text-main);
             background-color: var(--bg-color);
-            padding: 20px;
+            padding: 30px 20px;
         }
 
         .container {
@@ -39,62 +42,71 @@
         /* Profile Header */
         .profile-card {
             background: var(--card-bg);
-            padding: 35px;
+            padding: 40px;
             border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
             display: flex;
-            gap: 30px;
+            gap: 35px;
             align-items: center;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             border: 1px solid var(--border-color);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
         }
 
         .avatar {
-            width: 130px;
-            height: 160px;
+            width: 140px;
+            height: 170px;
             object-fit: cover;
             border-radius: 8px;
-            border: 2px solid var(--border-color);
+            border: 3px solid var(--border-color);
             background-color: #e2e8f0;
             flex-shrink: 0;
         }
 
         .profile-info h1 {
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: var(--primary-color);
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
         }
 
         .profile-info .title {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             font-weight: 600;
             color: var(--accent-color);
             margin-bottom: 12px;
         }
 
         .meta-list {
-            font-size: 0.92rem;
+            font-size: 0.95rem;
             color: var(--text-muted);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .links-group {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 12px;
         }
 
         .link-btn {
             display: inline-flex;
             align-items: center;
-            padding: 6px 14px;
+            gap: 6px;
+            padding: 8px 16px;
             border-radius: 6px;
             background: var(--badge-bg);
             color: var(--badge-text);
             text-decoration: none;
-            font-size: 0.88rem;
-            font-weight: 500;
+            font-size: 0.9rem;
+            font-weight: 600;
             transition: all 0.2s;
+            border: 1px solid transparent;
         }
 
         .link-btn:hover {
@@ -102,31 +114,45 @@
             color: #fff;
         }
 
+        .link-btn.primary {
+            background: var(--primary-color);
+            color: #fff;
+        }
+        
+        .link-btn.primary:hover {
+            background: var(--accent-color);
+        }
+
         /* Section Layout */
         .section {
             background: var(--card-bg);
-            padding: 30px;
+            padding: 35px;
             border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            margin-bottom: 30px;
             border: 1px solid var(--border-color);
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-2px);
         }
 
         .section-title {
-            font-size: 1.35rem;
+            font-size: 1.4rem;
             color: var(--primary-color);
             border-bottom: 2px solid var(--badge-bg);
-            padding-bottom: 8px;
-            margin-bottom: 20px;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            gap: 10px;
         }
 
         /* Experience & Education Item */
         .item {
-            margin-bottom: 20px;
-            padding-bottom: 15px;
+            margin-bottom: 22px;
+            padding-bottom: 18px;
             border-bottom: 1px dashed var(--border-color);
         }
 
@@ -140,58 +166,72 @@
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .item-title {
             font-weight: 700;
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             color: var(--text-main);
         }
 
         .item-date {
-            font-size: 0.88rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
-            font-weight: 500;
+            font-weight: 600;
+            background: #f1f5f9;
+            padding: 2px 8px;
+            border-radius: 4px;
         }
 
         .item-sub {
             font-size: 0.95rem;
             color: var(--accent-color);
-            margin-bottom: 6px;
+            margin-bottom: 8px;
+            font-weight: 500;
         }
 
         .item-desc {
-            font-size: 0.92rem;
+            font-size: 0.95rem;
             color: var(--text-main);
+            line-height: 1.6;
         }
 
-        /* Highlight Cards for Awards */
+        /* Highlight Cards for Awards & Software */
         .award-badge {
             display: inline-block;
             background-color: #fef3c7;
             color: #92400e;
-            padding: 2px 8px;
+            padding: 3px 10px;
             border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-left: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-left: 10px;
+            vertical-align: middle;
         }
 
         /* Tags for Skills */
         .tag-group {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 10px;
         }
 
         .tag {
             background-color: #f1f5f9;
             color: #334155;
-            padding: 6px 12px;
+            padding: 8px 14px;
             border-radius: 20px;
-            font-size: 0.88rem;
+            font-size: 0.9rem;
+            font-weight: 500;
             border: 1px solid #e2e8f0;
+            transition: all 0.2s;
+        }
+        
+        .tag:hover {
+            background-color: var(--badge-bg);
+            color: var(--accent-color);
+            border-color: var(--accent-color);
         }
 
         /* Publications List */
@@ -200,28 +240,46 @@
         }
 
         .pub-item {
-            margin-bottom: 14px;
-            font-size: 0.93rem;
-            line-height: 1.5;
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .pub-item::before {
+            content: "\f02d";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+
+        .pub-item.patent::before {
+            content: "\f0eb"; /* Lightbulb icon for patents */
         }
 
         .pub-item a {
             color: var(--accent-color);
             text-decoration: none;
+            font-weight: 600;
         }
 
         .pub-item a:hover {
             text-decoration: underline;
         }
 
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
             .profile-card {
                 flex-direction: column;
                 text-align: center;
+                padding: 30px 20px;
             }
             .item-header {
                 flex-direction: column;
                 align-items: flex-start;
+                gap: 5px;
             }
             .links-group {
                 justify-content: center;
@@ -233,87 +291,71 @@
 
 <div class="container">
 
+    <!-- Profile Header -->
     <div class="profile-card">
-        <img src="photo.jpg" alt="Wei Wei" class="avatar" onerror="this.src='https://via.placeholder.com/130x160?text=Wei+Wei'">
+        <img src="photo.jpg" alt="Wei Wei" class="avatar" onerror="this.src='https://via.placeholder.com/140x170?text=Wei+Wei'">
         <div class="profile-info">
             <h1>Wei Wei</h1>
-            <div class="title">Postdoctoral Researcher</div>
+            <div class="title">Honorary Postdoctoral Fellow</div>
             <div class="meta-list">
-                DOB: June 28, 1996 &nbsp;|&nbsp; Nationality: Chinese &nbsp;|&nbsp; Email: wei.wei.3@unimelb.edu.au
+                <i class="fa-solid fa-cake-candles"></i> June 28, 1996 &nbsp;|&nbsp; 
+                <i class="fa-solid fa-earth-asia"></i> Chinese &nbsp;|&nbsp; 
+                <i class="fa-solid fa-location-dot"></i> Guangzhou / Melbourne
             </div>
             <div class="links-group">
-                <a href="mailto:wei.wei.3@unimelb.edu.au" class="link-btn">Email</a>
-                <a href="https://orcid.org/0009-0002-4076-4948" target="_blank" class="link-btn">ORCID</a>
-                <a href="https://scholar.google.com/citations?user=DBySXhAAAAAJ&hl=en" target="_blank" class="link-btn">Google Scholar</a>
-                <a href="https://www.researchgate.net/profile/Wei-Wei-239" target="_blank" class="link-btn">ResearchGate</a>
+                <!-- 核心按钮高亮 -->
+                <a href="CV_Wei_Wei.pdf" target="_blank" class="link-btn primary"><i class="fa-solid fa-download"></i> Download CV</a>
+                <a href="mailto:wei.wei.3@unimelb.edu.au" class="link-btn"><i class="fa-solid fa-envelope"></i> Email</a>
+                <a href="https://github.com/salvatorewei" target="_blank" class="link-btn"><i class="fa-brands fa-github"></i> GitHub</a>
+                <a href="https://scholar.google.com/citations?user=DBySXhAAAAAJ&hl=en" target="_blank" class="link-btn"><i class="fa-brands fa-google-scholar"></i> Google Scholar</a>
+                <a href="https://orcid.org/0009-0002-4076-4948" target="_blank" class="link-btn"><i class="fa-brands fa-orcid"></i> ORCID</a>
             </div>
         </div>
     </div>
 
+    <!-- Research Interests -->
     <div class="section">
-        <h2 class="section-title">Research Interests</h2>
+        <h2 class="section-title"><i class="fa-solid fa-microscope"></i> Research Interests</h2>
         <div class="tag-group">
-            <span class="tag">Climate-neutral energy infrastructure</span>
-            <span class="tag">Sustainable decommissioning of OWT</span>
-            <span class="tag">Stochastic aero-hydrodynamic loading</span>
-            <span class="tag">Soil-pile interaction</span>
-            <span class="tag">Coupled Eulerian-Lagrangian (CEL) methods</span>
+            <span class="tag">Offshore Geotechnics</span>
+            <span class="tag">Soil-pile Interaction (Sands & Soft Soils)</span>
+            <span class="tag">Advanced Constitutive Modelling</span>
+            <span class="tag">Coupled Eulerian-Lagrangian (CEL)</span>
+            <span class="tag">Python-based FE Automation</span>
+            <span class="tag">Machine Learning Surrogate Models</span>
         </div>
     </div>
 
+    <!-- Current Position -->
     <div class="section">
-        <h2 class="section-title">Current & Incoming Positions</h2>
-        
-        <div class="item">
-            <div class="item-header">
-                <span class="item-title">Nantes University</span>
-                <span class="item-date">Expected 10/2026</span>
-            </div>
-            <div class="item-sub">Incoming Postdoctoral Fellow | Nantes, France</div>
-            <div class="item-desc">
-                <strong>Project:</strong> SLOOP (Stochastic Loads on Offshore Piles)<br>
-                <strong>Supervisor:</strong> Dr. Zhongsen Li<br>
-                <em>Evaluating geomechanical responses of offshore monopiles under stochastic aero-hydrodynamic loads to reduce LCOE and support European climate-neutral energy targets.</em>
-            </div>
-        </div>
-
+        <h2 class="section-title"><i class="fa-solid fa-briefcase"></i> Current Position</h2>
         <div class="item">
             <div class="item-header">
                 <span class="item-title">The University of Melbourne</span>
                 <span class="item-date">12/2025 – Present</span>
             </div>
-            <div class="item-sub">Postdoctoral Fellow (Remote) | Melbourne, Australia</div>
+            <div class="item-sub">Honorary Postdoctoral Fellow | Melbourne, Australia</div>
             <div class="item-desc">
                 <strong>Project:</strong> POLAR (Performance evaluation Of piLe foundAtion in extRaction)<br>
                 <strong>Supervisor:</strong> Prof. Yinghui Tian (ARC Future Fellow)<br>
-                <em>Developing advanced numerical frameworks to explicitly evaluate the extraction force of offshore monopiles for sustainable wind farm decommissioning.</em>
+                <em>Developing advanced large-deformation numerical frameworks to evaluate the extraction mechanics of offshore monopiles for sustainable wind farm decommissioning.</em>
             </div>
         </div>
     </div>
 
+    <!-- Education -->
     <div class="section">
-        <h2 class="section-title">Education</h2>
-        
+        <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Education</h2>
         <div class="item">
             <div class="item-header">
                 <span class="item-title">Sun Yat-Sen University</span>
-                <span class="item-date">09/2020 – 06/2025</span>
+                <span class="item-date">09/2018 – 06/2025</span>
             </div>
             <div class="item-sub">PhD in Civil Engineering | Guangzhou, China</div>
             <div class="item-desc">
-                <strong>Supervisor:</strong> Prof. Fuming Wang (Academician of Chinese Academy of Engineering)<br>
-                <strong>Thesis:</strong> Study on the lateral behavior of offshore wind turbine monopiles and the impact of pile-soil characteristics
+                <strong>Supervisor:</strong> Prof. Fuming Wang (Academician of Chinese Academy of Engineering)
             </div>
         </div>
-
-        <div class="item">
-            <div class="item-header">
-                <span class="item-title">Sun Yat-Sen University</span>
-                <span class="item-date">09/2018 – 09/2020</span>
-            </div>
-            <div class="item-sub">Master in Geotechnical Engineering | Guangzhou, China</div>
-        </div>
-
         <div class="item">
             <div class="item-header">
                 <span class="item-title">China University of Mining and Technology</span>
@@ -323,120 +365,13 @@
         </div>
     </div>
 
+    <!-- Grants & Fellowships (更新了名字) -->
     <div class="section">
-        <h2 class="section-title">Honors, Funding & Awards</h2>
+        <h2 class="section-title"><i class="fa-solid fa-award"></i> Grants, Fellowships & Proposals</h2>
         
         <div class="item">
             <div class="item-header">
-                <span class="item-title">Marie Skłodowska-Curie Actions (MSCA) Seal of Excellence <span class="award-badge">Prestigious</span></span>
-                <span class="item-date">02/2026</span>
+                <span class="item-title">CETP Project Proposal <span class="award-badge">Under Review</span></span>
+                <span class="item-date">2026</span>
             </div>
             <div class="item-desc">
-                Host Institution: Norwegian Geotechnical Institute (NGI)<br>
-                Supervisors: Dr. Chuangxin Lyu, Dr. Zhongqiang Liu<br>
-                Project Focus: Sustainable decommissioning and extraction mechanisms of offshore wind foundations.
-            </div>
-        </div>
-
-        <div class="item">
-            <div class="item-header">
-                <span class="item-title">Visiting Researcher Grant</span>
-                <span class="item-date">06/2026</span>
-            </div>
-            <div class="item-desc">Fully funded research stay at Nantes University, France.</div>
-        </div>
-
-        <div class="item">
-            <div class="item-header">
-                <span class="item-title">Postdoctoral Fellowship</span>
-                <span class="item-date">06/2025</span>
-            </div>
-            <div class="item-desc">Funded by China Scholarship Council (CSC).</div>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2 class="section-title">Key Research Projects</h2>
-        
-        <div class="item">
-            <div class="item-header">
-                <span class="item-title">Marine Economic Development Program of Guangdong Province</span>
-                <span class="item-date">12/2023 – 12/2025</span>
-            </div>
-            <div class="item-desc">
-                Role: Designed and demonstrated scour protection systems using repurposed waste tires for monopiles (Total: €1,437,600).
-            </div>
-        </div>
-
-        <div class="item">
-            <div class="item-header">
-                <span class="item-title">Key-Area Research and Development Program of Guangdong Province</span>
-                <span class="item-date">09/2022 – Present</span>
-            </div>
-            <div class="item-desc">
-                Role: Field testing of seawater-soil heat transfer and soil deformation using fiber optic sensors (Total: €7,787,000).
-            </div>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2 class="section-title">Publications & Patents</h2>
-        
-        <h3 style="font-size: 1rem; color: var(--accent-color); margin-bottom: 10px;">Journal Articles & Conferences</h3>
-        <ul class="pub-list">
-            <li class="pub-item">
-                Fu, Z. Z., Qian, H. L., <strong>Wei, W.</strong>, Chu, X. X., Yang, F., Guo, C. C., Wang, F. M. (2025). An Informer-BiGRU-temporal attention multi-step wind speed prediction model based on spatial-temporal dimension denoising and combined VMD decomposition. <em>Energy</em>, 326, 136265. <a href="https://doi.org/10.1016/j.energy.2025.136265" target="_blank">[DOI]</a>
-            </li>
-            <li class="pub-item">
-                <strong>Wei, W.</strong>, Wang, F. M., Yang, F., Guo, C. C. (2024). Influence of soil and pile properties on the critical length of laterally loaded piles. <em>Applied Ocean Research</em>, 150, 104091. <a href="https://doi.org/10.1016/j.apor.2024.104091" target="_blank">[DOI]</a>
-            </li>
-            <li class="pub-item">
-                <strong>Wei, W.</strong>, Wang, F. M., Yang, F., Guo, C. C. (2025). Behavior of rigid and semi-rigid monopiles: a critical analysis of ultimate capacity. <em>5th ISFOG, Nantes.</em> <a href="https://www.issmge.org/uploads/publications/132/133/ISFOG2025-473.pdf" target="_blank">[PDF]</a>
-            </li>
-            <li class="pub-item">
-                <strong>Wei, W.</strong>, Wang, F. M., Yang, F., Guo, C. C. (2024). Influence of Soil and Pile Properties on the Critical and Rotation Length of Laterally Loaded Piles. <em>34th ISOPE, Rhodes.</em> <a href="https://onepetro.org/ISOPEIOPEC/proceedings-abstract/ISOPE24/546569" target="_blank">[Link]</a>
-            </li>
-        </ul>
-
-        <h3 style="font-size: 1rem; color: var(--accent-color); margin: 15px 0 10px 0;">Patents</h3>
-        <ul class="pub-list">
-            <li class="pub-item">
-                <strong>Wei, W.</strong>, Wang, F. M., Yang, F., Guo, C. C. (2025). <em>A leveling device and leveling method for offshore wind monopile foundations</em>. Chinese Patent Application No. 202510129443.9 (Pending).
-            </li>
-        </ul>
-    </div>
-
-    <div class="section">
-        <h2 class="section-title">Technical Skills</h2>
-        <p><strong>Numerical & Constitutive Modeling:</strong> <em>numgeo</em>, Abaqus (Standard/Explicit), CEL method, UMAT/VUMAT development.</p>
-        <p style="margin-top: 8px;"><strong>Programming & Scientific Tools:</strong> Python, MATLAB, Machine Learning (Surrogate Modeling), ParaView.</p>
-    </div>
-
-    <div class="section">
-        <h2 class="section-title">References</h2>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-            <div>
-                <strong>Prof. Fuming Wang</strong><br>
-                <small>Academician of Chinese Academy of Engineering</small><br>
-                Sun Yat-Sen University<br>
-                <a href="mailto:wangfm@sysu.edu.cn">wangfm@sysu.edu.cn</a>
-            </div>
-            <div>
-                <strong>Prof. Yinghui Tian</strong><br>
-                <small>ARC Future Fellow</small><br>
-                The University of Melbourne<br>
-                <a href="mailto:yinghui.tian@unimelb.edu.au">yinghui.tian@unimelb.edu.au</a>
-            </div>
-            <div>
-                <strong>Dr. Zhongqiang Liu</strong><br>
-                <small>Principal Researcher</small><br>
-                Norwegian Geotechnical Institute (NGI)<br>
-                <a href="mailto:zhongqiang.liu@ngi.no">zhongqiang.liu@ngi.no</a>
-            </div>
-        </div>
-    </div>
-
-</div>
-
-</body>
-</html>
